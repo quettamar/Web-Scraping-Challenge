@@ -6,25 +6,25 @@ In this assignment, you will build a web application that scrapes various websit
 
 ### Before You Begin
 
-1. Create a new repository for this project called `web-scraping-challenge`. **Do not add this homework to an existing repository**.
+1. Create a new repository for this project called `web-scraping-challenge`. **Do not add this homework to an existing repository**. DONE
 
-2. Clone the new repository to your computer.
+2. Clone the new repository to your computer. Done
 
 3. Inside your local git repository, create a directory for the web scraping challenge. Use a folder name to correspond to the challenge: **Missions_to_Mars**.
 
-4. Add your notebook files to this folder as well as your flask app.
+4. Add your notebook files to this folder as well as your flask app.DONE
 
-5. Push the above changes to GitHub or GitLab.
+5. Push the above changes to GitHub or GitLab. DONE
 
 ## Step 1 - Scraping
 
 Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
-* Create a Jupyter Notebook file called `mission_to_mars.ipynb` and use this to complete all of your scraping and analysis tasks. The following outlines what you need to scrape.
+* Create a Jupyter Notebook file called `mission_to_mars.ipynb` and use this to complete all of your scraping and analysis tasks. The following outlines what you need to scrape. DONE
 
 ### NASA Mars News
 
-* Scrape the [Mars News Site](https://redplanetscience.com/) and collect the latest News Title and Paragraph Text. Assign the text to variables that you can reference later.
+* Scrape the [Mars News Site](https://redplanetscience.com/) and collect the latest News Title and Paragraph Text. Assign the text to variables that you can reference later. DONE
 
 ```python
 # Example:

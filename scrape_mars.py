@@ -20,7 +20,7 @@ def scrape_info():
     soup = bs(html, "html.parser")
 
     # Get the average temps
-    avg_temps = soup.find('div', id='weather')
+    title = soup.find('div', class_="content-title")
 
     # Get the min avg temp
     min_temp = avg_temps.find_all('strong')[0].text
