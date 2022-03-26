@@ -12,6 +12,8 @@ def scrape_info():
     url = "https://redplanetscience.com/"
     browser.visit(url)
 
+    time.sleep(5)
+
     html = browser.html
     soup = bs(html, "html.parser")
 
@@ -35,15 +37,15 @@ def scrape_info():
     image_url = image.get('src')
     featured_img_url = root_url + image_url
 
-    url = "https://galaxyfacts-mars.com"
-    browser.visit(url)
+    # url = "https://galaxyfacts-mars.com"
+    # browser.visit(url)
 
-    # I found table first using beatifulsoup
-    # mars_table = soup.find('table', class_="table table-striped")
-    #use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
-    df = pd.read_html("https://galaxyfacts-mars.com")[0]
-    df.columns=["Description", "Mars", "Earth"]
-    df.set_index("Description", inplace=True)
+    # # I found table first using beatifulsoup
+    # # mars_table = soup.find('table', class_="table table-striped")
+    # #use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
+    # df = pd.read_html("https://galaxyfacts-mars.com")[0]
+    # df.columns=["Description", "Mars", "Earth"]
+    # df.set_index("Description", inplace=True)
 
     url = "https://marshemispheres.com/"
     browser.visit(url)
@@ -59,6 +61,7 @@ def scrape_info():
         link = result.find("a")["href"]
         image_link = "https://marshemispheres.com/" + link
         browser.visit(image_link)
+        time.sleep(3)
         html = browser.html
         soup= bs(html, "html.parser")
         full_size_img = soup.find("img", class_="wide-image")['src']
@@ -74,14 +77,12 @@ def scrape_info():
     "news title" : news_title,
     "news_p" : news_p,
     "featured_img_url" : featured_img_url,
-    "df" : df,
     "hemisphere_image_urls" : hemisphere_image_urls
     }
 
+    #Close the browser after scraping
+    browser.quit()
+
     #Return results
     return mars_data
-
-#Close the browser after scraping
-browser.quit()
-
 
