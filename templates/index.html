@@ -5,18 +5,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Costa Rica Weather</title>
+  <title>Mars Data</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="jumbotron text-center">
-      <h1>Visit the...</h1>
-      <p>Beach. Rainforest. Volcano. Tree House. Sloths.</p>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="jumbotron text-center">
+          <h1>Mission to Mars</h1>
+          <a class="btn btn-primary btn-lg" href="/scrape" role="button">Get New Data!</a>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Latest Mars News</h2>
+            <h3>{{mars_data.news_title}}</h3>
+            <p>{{mars_data.news_p}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h3>
+              Featured Mars Image
+            </h3><img alt="Featured Mars Image" src="{{mars_data.featured_img_url}}" < />
+          </div>
+          <div class="col-md-6"">
+            <div class="card"><div class="card-body">
+            {{mars_data.mars_facts|safe}}
+          </div></div></div>
+        </div>
+      </div>
+      <h3 class="text-center">
+        Mars Hemispheres
+      </h3><span class="badge badge-default"></span>
+      <div class="row">
+        {% for img in mars_data.hemisphere_image_urls %}
+        <div class="col-md-3">
+          <img alt="{{img.title}}" src="{{img.image_url}}" class="img-thumbnail" < />
+          <p>
+            {{img.title}}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
     </div>
-  </div>
   </div>
 </body>
 

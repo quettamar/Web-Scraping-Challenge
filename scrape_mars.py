@@ -2,6 +2,7 @@ from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import time
 from webdriver_manager.chrome import ChromeDriverManager
+import pandas as pd
 
 
 def scrape_info():
@@ -37,15 +38,13 @@ def scrape_info():
     image_url = image.get('src')
     featured_img_url = root_url + image_url
 
-    # url = "https://galaxyfacts-mars.com"
-    # browser.visit(url)
-
-    # # I found table first using beatifulsoup
-    # # mars_table = soup.find('table', class_="table table-striped")
-    # #use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
-    # df = pd.read_html("https://galaxyfacts-mars.com")[0]
-    # df.columns=["Description", "Mars", "Earth"]
-    # df.set_index("Description", inplace=True)
+    # I found table first using beatifulsoup
+    # mars_table = soup.find('table', class_="table table-striped")
+    #use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
+    df = pd.read_html("https://galaxyfacts-mars.com")[0]
+    df.columns=["Description", "Mars", "Earth"]
+    df.set_index("Description", inplace=True)
+    mars_facts = df.to_html()
 
     url = "https://marshemispheres.com/"
     browser.visit(url)
@@ -74,8 +73,9 @@ def scrape_info():
         hemisphere_image_urls.append(image_dict)
 
     mars_data = {
-    "news title" : news_title,
+    "news_title" : news_title,
     "news_p" : news_p,
+    "mars_facts": mars_facts,
     "featured_img_url" : featured_img_url,
     "hemisphere_image_urls" : hemisphere_image_urls
     }

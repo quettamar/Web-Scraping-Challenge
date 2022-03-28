@@ -16,9 +16,11 @@ def home():
     # Find one record of data from the mongo database. 
     mars_data = mongo.db.mars_info.find_one()
 
+    print(mars_data)
+    
     # Return template and data. "info" will be a dictionary that can
     #be referenced in the index.html
-    return render_template("index.html", info=mars_data)
+    return render_template("index.html", mars_data=mars_data)
 
 
 # Route that will trigger the scrape function
